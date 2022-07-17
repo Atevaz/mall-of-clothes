@@ -44,6 +44,10 @@ dependencies:
   fluttertoast: ^8.0.9
   sizer: ^2.0.15
   flutter_svg_provider: ^1.0.3
+  country_phone_code_picker: ^0.0.41
+  flutter_svg: ^1.1.1+1
+  device_preview: ^1.1.0
+  flutter_screenutil: ^5.5.3+2
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +75,7 @@ flutter:
   assets:
     - assets/images/
     - assets/i18n/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
