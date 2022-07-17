@@ -1,4 +1,6 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +25,7 @@ Future<void> main() async {
       DioHelper.init();
       await CacheHelper.init();
       final locale =
-          CacheHelper.getDataFromSharedPreference(key: 'language') ?? "ar";
+          CacheHelper.getDataFromSharedPreference(key: 'language') ?? "en";
       delegate = await LocalizationDelegate.create(
         fallbackLocale: locale,
         supportedLocales: ['ar', 'en'],
@@ -31,6 +33,7 @@ Future<void> main() async {
       await delegate.changeLocale(Locale(locale));
       runApp(MyApp(
         appRouter: AppRouter(),
+
       ));
     },
     blocObserver: MyBlocObserver(),
@@ -82,27 +85,33 @@ class _MyAppState extends State<MyApp> {
               return LocalizedApp(
                 delegate,
                 LayoutBuilder(builder: (context, constraints) {
-                  return MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    title: 'Werash',
-                    localizationsDelegates: [
-                      GlobalCupertinoLocalizations.delegate,
-                      DefaultCupertinoLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      delegate,
-                    ],
-                    locale: delegate.currentLocale,
-                    supportedLocales: delegate.supportedLocales,
-                    onGenerateRoute: widget.appRouter.onGenerateRoute,
-                    theme: ThemeData(
-                      fontFamily: 'cairo',
-                      //scaffoldBackgroundColor: AppColors.white,
-                      appBarTheme: const AppBarTheme(
-                        elevation: 0.0,
-                        systemOverlayStyle: SystemUiOverlayStyle(
-                          //statusBarColor: AppColors.transparent,
-                          statusBarIconBrightness: Brightness.dark,
+                  return DevicePreview(
+                    enabled: !kReleaseMode,
+                    builder:(context) => MaterialApp(
+                      useInheritedMediaQuery: true,
+                      locale: DevicePreview.locale(context),
+                      builder: DevicePreview.appBuilder,
+                      debugShowCheckedModeBanner: false,
+                      title: 'Werash',
+                      localizationsDelegates: [
+                        GlobalCupertinoLocalizations.delegate,
+                        DefaultCupertinoLocalizations.delegate,
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        delegate,
+                      ],
+                      //locale: delegate.currentLocale,
+                      supportedLocales: delegate.supportedLocales,
+                      onGenerateRoute: widget.appRouter.onGenerateRoute,
+                      theme: ThemeData(
+                        fontFamily: 'cairo',
+                        //scaffoldBackgroundColor: AppColors.white,
+                        appBarTheme: const AppBarTheme(
+                          elevation: 0.0,
+                          systemOverlayStyle: SystemUiOverlayStyle(
+                            //statusBarColor: AppColors.transparent,
+                            statusBarIconBrightness: Brightness.dark,
+                          ),
                         ),
                       ),
                     ),
