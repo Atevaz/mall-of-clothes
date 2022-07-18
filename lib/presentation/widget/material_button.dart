@@ -17,7 +17,7 @@ class MyMaterialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      //width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -31,7 +31,10 @@ class MyMaterialButton extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .headline6!
-              .copyWith(color: Colors.white),
+              .copyWith(
+              color: Colors.white,
+            fontFamily: 'SemiBold'
+          ),
         ),
       ),
     );

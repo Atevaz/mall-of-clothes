@@ -86,7 +86,9 @@ class LoginView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      DefaultTextButton(text: 'forget password ? ', onPressed : (){}),
+                      DefaultTextButton(text: 'forget password ? ', onPressed : (){
+                        Navigator.pushNamed(context, AppRouterNames.rForgetPasswordRoute);
+                      }),
                     ],
                   ),
                   MyMaterialButton(
