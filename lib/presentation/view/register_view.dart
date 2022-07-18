@@ -48,161 +48,163 @@ class RegisterView extends StatelessWidget {
                   topRight: Radius.circular(50),
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MyFormField(
-                    inputType: TextInputType.text,
-                    hintText: 'User Name',
-                    controller: nameController,
-                    validateText: 'This Field Must Not Be Empty',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  MyFormField(
-                    inputType: TextInputType.text,
-                    hintText: '+965',
-                    controller: phoneController,
-                    validateText: 'This Field Must Not Be Empty',
-                    prefix: CountryPhoneCodePicker.withDefaultSelectedCountry(
-                      defaultCountryCode: Country(
-                          name: 'Egypt', countryCode: 'EG', phoneCode: '+20'),
-                      style: const TextStyle(fontSize: 16),
-                      searchBarHintText: 'Search by name',
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    MyFormField(
+                      inputType: TextInputType.text,
+                      hintText: 'User Name',
+                      controller: nameController,
+                      validateText: 'This Field Must Not Be Empty',
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  MyFormField(
-                    inputType: TextInputType.text,
-                    isPassword: true,
-                    hintText: 'Email',
-                    controller: emailController,
-                    validateText: 'This Field Must Not Be Empty',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  MyFormField(
-                    inputType: TextInputType.number,
-                    isPassword: true,
-                    hintText: 'Password',
-                    controller: passwordController,
-                    validateText: 'This Field Must Not Be Empty',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  MyFormField(
-                    inputType: TextInputType.number,
-                    isPassword: true,
-                    hintText: 'Confirm Password',
-                    controller: confirmPasswordController,
-                    validateText: 'This Field Must Not Be Empty',
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      DefaultTextButton(
-                          text: 'forget password ? ', onPressed: () {}),
-                    ],
-                  ),
-                  MyMaterialButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {}
-                    },
-                    text: 'CREATE ACCOUNT',
-                    color: AppColor.pink,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    'OR',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.red[50],
-                        child: SvgPicture.asset(
-                          'assets/icons/google.svg',
-                          color: Colors.redAccent,
-                          width: 25,
-                          height: 25,
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyFormField(
+                      inputType: TextInputType.text,
+                      hintText: '+965',
+                      controller: phoneController,
+                      validateText: 'This Field Must Not Be Empty',
+                      prefix: CountryPhoneCodePicker.withDefaultSelectedCountry(
+                        defaultCountryCode: Country(
+                            name: 'Egypt', countryCode: 'EG', phoneCode: '+20'),
+                        style: const TextStyle(fontSize: 16),
+                        searchBarHintText: 'Search by name',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyFormField(
+                      inputType: TextInputType.text,
+                      isPassword: true,
+                      hintText: 'Email',
+                      controller: emailController,
+                      validateText: 'This Field Must Not Be Empty',
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyFormField(
+                      inputType: TextInputType.number,
+                      isPassword: true,
+                      hintText: 'Password',
+                      controller: passwordController,
+                      validateText: 'This Field Must Not Be Empty',
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyFormField(
+                      inputType: TextInputType.number,
+                      isPassword: true,
+                      hintText: 'Confirm Password',
+                      controller: confirmPasswordController,
+                      validateText: 'This Field Must Not Be Empty',
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        DefaultTextButton(
+                            text: 'forget password ? ', onPressed: () {}),
+                      ],
+                    ),
+                    MyMaterialButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {}
+                      },
+                      text: 'CREATE ACCOUNT',
+                      color: AppColor.pink,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text(
+                      'OR',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.red[50],
+                          child: SvgPicture.asset(
+                            'assets/icons/google.svg',
+                            color: Colors.redAccent,
+                            width: 25,
+                            height: 25,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.blue[50],
-                        child: SvgPicture.asset(
-                          'assets/icons/face.svg',
-                          color: Colors.blue,
-                          width: 25,
-                          height: 25,
+                        const SizedBox(
+                          width: 10,
                         ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.black12,
-                        child: SvgPicture.asset(
-                          'assets/icons/apple.svg',
-                          color: Colors.black,
-                          width: 25,
-                          height: 25,
+                        CircleAvatar(
+                          backgroundColor: Colors.blue[50],
+                          child: SvgPicture.asset(
+                            'assets/icons/face.svg',
+                            color: Colors.blue,
+                            width: 25,
+                            height: 25,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      DefaultTextButton(
-                          text: 'already have account ?', onPressed: () {}),
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            const Text(
-                              'Sign In',
-                              style: TextStyle(color: AppColor.pink),
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.pink[50],
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.black12,
+                          child: SvgPicture.asset(
+                            'assets/icons/apple.svg',
+                            color: Colors.black,
+                            width: 25,
+                            height: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DefaultTextButton(
+                            text: 'already have account ?', onPressed: () {}),
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              const Text(
+                                'Sign In',
+                                style: TextStyle(color: AppColor.pink),
                               ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(1.0),
-                                child: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: AppColor.pink,
-                                  size: 20,
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.pink[50],
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(1.0),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: AppColor.pink,
+                                    size: 20,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

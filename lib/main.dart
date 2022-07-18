@@ -16,7 +16,7 @@ import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
 
 
-late LocalizationDelegate delegate;
+ LocalizationDelegate? delegate;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,13 +24,13 @@ Future<void> main() async {
         () async {
       DioHelper.init();
       await CacheHelper.init();
-      final locale =
+     /* final locale =
           CacheHelper.getDataFromSharedPreference(key: 'language') ?? "en";
       delegate = await LocalizationDelegate.create(
         fallbackLocale: locale,
         supportedLocales: ['ar', 'en'],
-      );
-      await delegate.changeLocale(Locale(locale));
+      );*/
+      //await delegate.changeLocale(Locale(locale));
       runApp(MyApp(
         appRouter: AppRouter(),
 
@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    Intl.defaultLocale = delegate.currentLocale.languageCode;
+  /*  Intl.defaultLocale = delegate.currentLocale.languageCode;
 
     delegate.onLocaleChanged = (Locale value) async {
       try {
@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
       } catch (e) {
         showToast(e.toString());
       }
-    };
+    };*/
   }
 
   @override
@@ -82,29 +82,27 @@ class _MyAppState extends State<MyApp> {
         builder: (context, state) {
           return Sizer(
             builder: (context, orientation, deviceType) {
-              return LocalizedApp(
-                delegate,
-                LayoutBuilder(builder: (context, constraints) {
+              return LayoutBuilder(builder: (context, constraints) {
                   return DevicePreview(
                     enabled: !kReleaseMode,
                     builder:(context) => MaterialApp(
                       useInheritedMediaQuery: true,
-                      locale: DevicePreview.locale(context),
+                      //locale: DevicePreview.locale(context),
                       builder: DevicePreview.appBuilder,
                       debugShowCheckedModeBanner: false,
                       title: 'Werash',
-                      localizationsDelegates: [
+                     /* localizationsDelegates: [
                         GlobalCupertinoLocalizations.delegate,
                         DefaultCupertinoLocalizations.delegate,
                         GlobalMaterialLocalizations.delegate,
                         GlobalWidgetsLocalizations.delegate,
                         delegate,
-                      ],
+                      ],*/
                       //locale: delegate.currentLocale,
-                      supportedLocales: delegate.supportedLocales,
+                      //supportedLocales: delegate.supportedLocales,
                       onGenerateRoute: widget.appRouter.onGenerateRoute,
                       theme: ThemeData(
-                        fontFamily: 'cairo',
+                        //fontFamily: 'cairo',
                         //scaffoldBackgroundColor: AppColors.white,
                         appBarTheme: const AppBarTheme(
                           elevation: 0.0,
@@ -116,8 +114,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                   );
-                }),
-              );
+                });
             },
           );
         },
