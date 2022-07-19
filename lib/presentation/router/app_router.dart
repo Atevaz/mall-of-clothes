@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft_flutter_structure/presentation/router/app_router_names.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/forget_passorord_screen.dart';
+import 'package:magdsoft_flutter_structure/presentation/screens/user/new_password_screen.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/onBorarding_screen.dart';
+import 'package:magdsoft_flutter_structure/presentation/screens/user/password_change_successfully.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/register_screen.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/verification_code_screen.dart';
 
@@ -20,7 +22,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => ForgetPasswordScreen());
       case AppRouterNames.rVerificationCodeRoute:
         return MaterialPageRoute(builder: (_) => VerificationCodeScreen());
-
+      case AppRouterNames.rNewPasswordChangeRoute:
+        return MaterialPageRoute(builder: (_) => NewPasswordScreen());
+      case AppRouterNames.rPasswordChangeSuccessfullyRoute:
+        return MaterialPageRoute(builder: (_) => PasswordChangeSuccessfully());
       default:
         return null;
     }

@@ -50,17 +50,9 @@ class OnBoardingView extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [/*
-                  buildDefaultButton(context,
-                    nameOfButton: 'Skip',
-                    borderRadius: 20,
-                    backgroundColor: Color(0xfffaf2e7),
-                    textColor: Colors.black,
-                    onPressed: () {
-                      navigateToAndReplacement(context, LoginScreen());
-                    },
-                  ),*/
+                children: [
                   MyMaterialButton(
+                    width: 100,
                     onPressed: ()
                     {
                       Navigator.pushNamed(context, AppRouterNames.rLoginRoute);
@@ -113,37 +105,15 @@ class OnBoardingView extends StatelessWidget {
                 count: boarding.length,
               ),
               SizedBox(height:20 ,),
-              SizedBox(
-                width: double.infinity,
-                child: MyMaterialButton(
-                  onPressed: ()
-                  {
-                    Navigator.pushNamed(context, AppRouterNames.rRegisterRoute);
-                  },
-                  text: 'Get Started',
-                  color: AppColor.pink,
+              MyMaterialButton(
+                onPressed: ()
+                {
+                  Navigator.pushNamed(context, AppRouterNames.rRegisterRoute);
+                },
+                text: 'Get Started',
+                color: AppColor.pink,
 
-                ),
               ),
-              /*Container(
-                width: MediaQuery.of(context).size.width,
-                child: buildDefaultButton(
-                  context,
-                  nameOfButton: 'Get Started',
-                  backgroundColor: Color(0xff51afab),
-                  textColor: Colors.white,
-                  onPressed: () {
-                    //navigateToAndReplacement(context, RegisterScreen());
-                  },
-                ),
-              ),*/
-           /*   defaultRegisterRow(
-                context,
-                textOfButton: 'Sign Up',
-                textOfExplain:'Don\'t has any account?',
-                fontWeight: FontWeight.bold,
-                color: Color(0xff51afab),
-              ),*/
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

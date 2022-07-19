@@ -1,12 +1,29 @@
-import 'package:country_phone_code_picker/country_phone_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:magdsoft_flutter_structure/presentation/router/app_router_names.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
-import 'package:magdsoft_flutter_structure/presentation/widget/default_text_form_field.dart';
+import 'package:magdsoft_flutter_structure/presentation/widget/headline_text.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/material_button.dart';
+import 'package:magdsoft_flutter_structure/presentation/widget/regular_text.dart';
 
-class ForgetPasswordView extends StatelessWidget {
-  var phoneController = TextEditingController();
+class ForgetPasswordView extends StatefulWidget {
+  final String headLineText;
+  final String subLineText;
+  final String buttonText;
+  final String appRouterNames;
+  Widget? widget;
+  ForgetPasswordView({
+   required this.headLineText,
+    required this.subLineText,
+    required this.widget,
+    required this.buttonText,
+    required this.appRouterNames,
+
+});
+
+  @override
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
+}
+
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -32,64 +49,29 @@ class ForgetPasswordView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Forget Password',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: AppColor.pink,
-                      fontFamily: 'SemiBold'
-                  ),
-                ),
+                //'Forget Password'
+                HeadLineText(text: widget.headLineText),
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  'Enter Phone Number to recover password',
-                  style: TextStyle(
-                    color: Colors.grey,
-                      fontFamily: 'Regular'
+                //'Enter Phone Number to recover password',
+              RegularText(text: widget.subLineText,maxLines: 2),
+                SizedBox(
+                  height: 10,
+                ),
+                widget.widget!,
+                SizedBox(
+                  height: 10,
+                ),
+                MyMaterialButton(
+                  onPressed: () {
+                   if (formKey.currentState!.validate()) {
+                     Navigator.pushNamed(context, widget.appRouterNames);
+                   }
 
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Image(
-                    image: AssetImage('assets/images/login3.png'),
-                  height: 300,
-                  width: MediaQuery.of(context).size.width,
-                  //fit: BoxFit.cover,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                MyFormField(
-                  inputType: TextInputType.text,
-                  hintText: '+965',
-                  controller: phoneController,
-                  validateText: 'This Field Must Not Be Empty',
-                  prefix: CountryPhoneCodePicker.withDefaultSelectedCountry(
-                    defaultCountryCode: Country(
-                        name: 'Egypt', countryCode: 'EG', phoneCode: '+20'),
-                    style: const TextStyle(fontSize: 16),
-                    searchBarHintText: 'Search by name',
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: MyMaterialButton(
-                    onPressed: () {
-                      /*if (formKey.currentState!.validate()) {
-
-                      }*/
-                      Navigator.pushNamed(context, AppRouterNames.rVerificationCodeRoute);
-                    },
-                    text: 'Send Code',
-                    color: AppColor.pink,
-                  ),
+                  },
+                  text: widget.buttonText,
+                  //color: AppColor.pink,
                 ),
               ],
             ),

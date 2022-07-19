@@ -1,8 +1,9 @@
-import 'package:country_phone_code_picker/core/country_phone_code_picker_widget.dart';
-import 'package:country_phone_code_picker/models/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:magdsoft_flutter_structure/presentation/router/app_router_names.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
+import 'package:magdsoft_flutter_structure/presentation/widget/default_InputPhone_Number.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/default_text_form_field.dart';
 
 import '../widget/material_button.dart';
@@ -16,6 +17,8 @@ class RegisterView extends StatelessWidget {
   var emailController = TextEditingController();
   var confirmPasswordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
+  PhoneNumber number = PhoneNumber(isoCode: 'EG');
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,18 +64,12 @@ class RegisterView extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    MyFormField(
-                      inputType: TextInputType.text,
-                      hintText: '+965',
+                    DefaultInputPhoneNumber(
                       controller: phoneController,
+                      number: number,
                       validateText: 'This Field Must Not Be Empty',
-                      prefix: CountryPhoneCodePicker.withDefaultSelectedCountry(
-                        defaultCountryCode: Country(
-                            name: 'Egypt', countryCode: 'EG', phoneCode: '+20'),
-                        style: const TextStyle(fontSize: 16),
-                        searchBarHintText: 'Search by name',
-                      ),
                     ),
+
                     const SizedBox(
                       height: 10,
                     ),
@@ -103,12 +100,8 @@ class RegisterView extends StatelessWidget {
                       controller: confirmPasswordController,
                       validateText: 'This Field Must Not Be Empty',
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        DefaultTextButton(
-                            text: 'forget password ? ', onPressed: () {}),
-                      ],
+                    const SizedBox(
+                      height: 15,
                     ),
                     MyMaterialButton(
                       onPressed: () {
@@ -172,9 +165,14 @@ class RegisterView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         DefaultTextButton(
-                            text: 'already have account ?', onPressed: () {}),
+                            text: 'already have account ?', onPressed: () {
+                          Navigator.pushNamed(context, AppRouterNames.rLoginRoute);
+
+                        }),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRouterNames.rLoginRoute);
+                          },
                           child: Row(
                             children: [
                               const Text(
