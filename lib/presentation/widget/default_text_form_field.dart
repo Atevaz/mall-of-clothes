@@ -13,6 +13,8 @@ class MyFormField extends StatelessWidget {
   final TextInputType inputType;
 
   final String hintText;
+  final TextAlign textAlign;
+  final Color color;
 
   const MyFormField({
     Key? key,
@@ -22,6 +24,8 @@ class MyFormField extends StatelessWidget {
     required this.inputType,
     required this.hintText,
     this.prefix,
+    this.textAlign = TextAlign.start,
+    this.color = AppColor.lightGrey,
   }) : super(key: key);
 
   @override
@@ -35,6 +39,7 @@ class MyFormField extends StatelessWidget {
       },
       obscureText: isPassword,
       keyboardType: inputType,
+      textAlign: textAlign,
       decoration: InputDecoration(
         hintText: hintText,
         border: InputBorder.none,
@@ -47,7 +52,7 @@ class MyFormField extends StatelessWidget {
           borderSide: BorderSide.none
         ),
         prefixIcon: prefix,
-        fillColor: AppColor.lightGrey,
+        fillColor: color,
         filled: true,
       ),
     );

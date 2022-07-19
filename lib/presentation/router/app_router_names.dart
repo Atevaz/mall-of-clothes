@@ -7,5 +7,7 @@ class AppRouterNames {
   static const rVerificationCodeRoute = '/verification_code';
   static const rNewPasswordRoute = '/new_password';
   static const rPasswordChangeRoute = '/password_change';
+  static const rNewPasswordChangeRoute = '/new_password_change';
+  static const rPasswordChangeSuccessfullyRoute = '/password_change_successfully';
 
 }

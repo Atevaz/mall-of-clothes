@@ -1,10 +1,10 @@
-import 'package:country_phone_code_picker/core/country_phone_code_picker_widget.dart';
-import 'package:country_phone_code_picker/models/country.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:magdsoft_flutter_structure/presentation/router/app_router_names.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
+import 'package:magdsoft_flutter_structure/presentation/widget/default_InputPhone_Number.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/material_button.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/text_button.dart';
 
@@ -17,6 +17,8 @@ class LoginView extends StatelessWidget {
   var phoneController = TextEditingController();
   var passwordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
+  PhoneNumber number = PhoneNumber(isoCode: 'EG');
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,12 @@ class LoginView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  MyFormField(
+                  DefaultInputPhoneNumber(
+                    controller: phoneController,
+                    number: number,
+                    validateText: 'This Field Must Not Be Empty',
+                  ),
+                 /* MyFormField(
                     inputType: TextInputType.text,
                     hintText: '+965',
                     controller: phoneController,
@@ -72,12 +79,12 @@ class LoginView extends StatelessWidget {
                       style: const TextStyle(fontSize: 16),
                       searchBarHintText: 'Search by name',
                     ),
-                  ),
+                  ),*/
                   const SizedBox(
                     height: 10,
                   ),
                   MyFormField(
-                    inputType: TextInputType.number,
+                    inputType: TextInputType.visiblePassword,
                     isPassword: true,
                     hintText: 'Password',
                     controller: passwordController,
@@ -94,7 +101,6 @@ class LoginView extends StatelessWidget {
                   MyMaterialButton(
                     onPressed: () {
                       if(formKey.currentState!.validate()){
-
                       }
                     },
                     text: 'LOGIN',

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
+import 'package:magdsoft_flutter_structure/presentation/widget/headline_text.dart';
 
 class MyMaterialButton extends StatelessWidget {
   final Color color;
@@ -7,17 +9,23 @@ class MyMaterialButton extends StatelessWidget {
 
   final String text;
 
+  final double width;
+  final bool isUpper ;
+
+
   const MyMaterialButton({
     Key? key,
-    this.color = Colors.blue,
+    this.color = Colors.pink,
     required this.onPressed,
     required this.text,
+     this.width = double.infinity,
+    this.isUpper = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      //width: double.infinity,
+      width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -26,15 +34,10 @@ class MyMaterialButton extends StatelessWidget {
         color: color,
         height: 52,
         onPressed: onPressed,
-        child: Text(
-          text,
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(
-              color: Colors.white,
-            fontFamily: 'SemiBold'
-          ),
+        child: HeadLineText(
+          text: isUpper ? text.toUpperCase() : text,
+          color: AppColor.white,
+          fontSize: 20,
         ),
       ),
     );
