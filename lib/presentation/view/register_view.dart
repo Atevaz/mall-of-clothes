@@ -28,7 +28,7 @@ class RegisterView extends StatelessWidget {
           SizedBox(
             child: Container(
                 color: AppColor.pink,
-                height: MediaQuery.of(context).size.height * .20,
+                height: 125,
                 padding: const EdgeInsets.all(20),
                 alignment: Alignment.bottomLeft,
                 child: Text(
@@ -42,13 +42,14 @@ class RegisterView extends StatelessWidget {
           Form(
             key: formKey,
             child: Container(
-              height: MediaQuery.of(context).size.height * .80,
+
+              height: MediaQuery.of(context).size.height ,
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                 color: AppColor.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
                 ),
               ),
               child: SingleChildScrollView(

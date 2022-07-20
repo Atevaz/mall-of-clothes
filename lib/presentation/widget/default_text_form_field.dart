@@ -6,6 +6,7 @@ class MyFormField extends StatelessWidget {
 
   final TextEditingController controller;
 
+  VoidCallback? onTap ;
   final String validateText;
 
   final bool isPassword;
@@ -16,7 +17,7 @@ class MyFormField extends StatelessWidget {
   final TextAlign textAlign;
   final Color color;
 
-  const MyFormField({
+  MyFormField({
     Key? key,
     required this.controller,
     required this.validateText,
@@ -26,6 +27,7 @@ class MyFormField extends StatelessWidget {
     this.prefix,
     this.textAlign = TextAlign.start,
     this.color = AppColor.lightGrey,
+    this.onTap ,
   }) : super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class MyFormField extends StatelessWidget {
           return validateText;
         }
       },
+      onTap: onTap!,
       obscureText: isPassword,
       keyboardType: inputType,
       textAlign: textAlign,

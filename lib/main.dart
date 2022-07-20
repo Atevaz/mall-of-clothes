@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:magdsoft_flutter_structure/business_logic/bloc_observer.dart';
 import 'package:magdsoft_flutter_structure/business_logic/global_cubit/global_cubit.dart';
@@ -15,16 +16,15 @@ import 'package:magdsoft_flutter_structure/presentation/widget/toast.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
 
-
- LocalizationDelegate? delegate;
+LocalizationDelegate? delegate;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   BlocOverrides.runZoned(
-        () async {
+    () async {
       DioHelper.init();
       await CacheHelper.init();
-     /* final locale =
+      /* final locale =
           CacheHelper.getDataFromSharedPreference(key: 'language') ?? "en";
       delegate = await LocalizationDelegate.create(
         fallbackLocale: locale,
@@ -33,7 +33,6 @@ Future<void> main() async {
       //await delegate.changeLocale(Locale(locale));
       runApp(MyApp(
         appRouter: AppRouter(),
-
       ));
     },
     blocObserver: MyBlocObserver(),
@@ -56,7 +55,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-  /*  Intl.defaultLocale = delegate.currentLocale.languageCode;
+    /*  Intl.defaultLocale = delegate.currentLocale.languageCode;
 
     delegate.onLocaleChanged = (Locale value) async {
       try {
@@ -83,38 +82,43 @@ class _MyAppState extends State<MyApp> {
           return Sizer(
             builder: (context, orientation, deviceType) {
               return LayoutBuilder(builder: (context, constraints) {
-                  return DevicePreview(
-                    enabled: !kReleaseMode,
-                    builder:(context) => MaterialApp(
-                      useInheritedMediaQuery: true,
-                      //locale: DevicePreview.locale(context),
-                      builder: DevicePreview.appBuilder,
-                      debugShowCheckedModeBanner: false,
-                      title: 'Werash',
-                     /* localizationsDelegates: [
-                        GlobalCupertinoLocalizations.delegate,
-                        DefaultCupertinoLocalizations.delegate,
-                        GlobalMaterialLocalizations.delegate,
-                        GlobalWidgetsLocalizations.delegate,
-                        delegate,
-                      ],*/
-                      //locale: delegate.currentLocale,
-                      //supportedLocales: delegate.supportedLocales,
-                      onGenerateRoute: widget.appRouter.onGenerateRoute,
-                      theme: ThemeData(
-                        //fontFamily: 'cairo',
-                        //scaffoldBackgroundColor: AppColors.white,
-                        appBarTheme: const AppBarTheme(
-                          elevation: 0.0,
-                          systemOverlayStyle: SystemUiOverlayStyle(
-                            //statusBarColor: AppColors.transparent,
-                            statusBarIconBrightness: Brightness.dark,
+                return DevicePreview(
+                  enabled: !kReleaseMode,
+                  builder: (context) => ScreenUtilInit(
+                    designSize: const Size(414, 896),
+                    builder: (context, child) {
+                      return MaterialApp(
+                        useInheritedMediaQuery: true,
+                        //locale: DevicePreview.locale(context),
+                        builder: DevicePreview.appBuilder,
+                        debugShowCheckedModeBanner: false,
+                        title: 'Werash',
+                        /* localizationsDelegates: [
+                          GlobalCupertinoLocalizations.delegate,
+                          DefaultCupertinoLocalizations.delegate,
+                          GlobalMaterialLocalizations.delegate,
+                          GlobalWidgetsLocalizations.delegate,
+                          delegate,
+                        ],*/
+                        //locale: delegate.currentLocale,
+                        //supportedLocales: delegate.supportedLocales,
+                        onGenerateRoute: widget.appRouter.onGenerateRoute,
+                        theme: ThemeData(
+                          //fontFamily: 'cairo',
+                          //scaffoldBackgroundColor: AppColors.white,
+                          appBarTheme: const AppBarTheme(
+                            elevation: 0.0,
+                            systemOverlayStyle: SystemUiOverlayStyle(
+                              //statusBarColor: AppColors.transparent,
+                              statusBarIconBrightness: Brightness.dark,
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  );
-                });
+                      );
+                    },
+                  ),
+                );
+              });
             },
           );
         },
