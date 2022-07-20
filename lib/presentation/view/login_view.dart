@@ -84,6 +84,7 @@ class LoginView extends StatelessWidget {
                     height: 10,
                   ),
                   MyFormField(
+                    onTap: (){},
                     inputType: TextInputType.visiblePassword,
                     isPassword: true,
                     hintText: 'Password',
