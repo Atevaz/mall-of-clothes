@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
 
 class HeadLineText extends StatelessWidget {
@@ -25,7 +26,7 @@ class HeadLineText extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontFamily: 'SemiBold',
-        fontSize: fontSize,
+        fontSize: fontSize.sp,
           overflow: overflow
 
       ),
