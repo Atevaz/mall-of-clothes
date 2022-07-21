@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
+import 'package:magdsoft_flutter_structure/presentation/view/my_app_bar.dart';
 import 'package:magdsoft_flutter_structure/presentation/view/register_view.dart';
 
 class RegisterScreen extends StatelessWidget {

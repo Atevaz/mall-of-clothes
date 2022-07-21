@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
 
 class MediumText extends StatelessWidget {
@@ -24,7 +25,7 @@ class MediumText extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontFamily: 'Medium',
-        fontSize: fontSize,
+        fontSize: fontSize.sp,
         overflow: overflow
       ),
       maxLines:maxLines ,

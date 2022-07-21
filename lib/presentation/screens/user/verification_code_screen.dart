@@ -4,17 +4,26 @@ import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
 import 'package:magdsoft_flutter_structure/presentation/view/forget_password_view.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/default_text_form_field.dart';
 
-class VerificationCodeScreen extends StatelessWidget {
+class VerificationCodeScreen extends StatefulWidget {
+  @override
+  State<VerificationCodeScreen> createState() => _VerificationCodeScreenState();
+}
+
+class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
   var verificationNumberOne = TextEditingController();
+
   var verificationNumberTwo = TextEditingController();
+
   var verificationNumberThree = TextEditingController();
+
   var verificationNumberFour = TextEditingController();
+
   var verificationNumberFive = TextEditingController();
-
-
 
   @override
   Widget build(BuildContext context) {
+
+
     return ForgetPasswordView(
       appRouterNames: AppRouterNames.rNewPasswordChangeRoute,
       headLineText: 'Verification',
@@ -41,7 +50,6 @@ class VerificationCodeScreen extends StatelessWidget {
     ) ;
   }
 
-
   Widget buildVerificationItem(TextEditingController controller)=> Expanded(
     child: Container(
       height: 50,
@@ -54,12 +62,30 @@ class VerificationCodeScreen extends StatelessWidget {
           width: 2,
         ),
       ),
-      child: MyFormField(
+      child: controller.text.isEmpty ? MyFormField(
+        onTap: (){
+          setState(() {
+
+          });
+        },
         textAlign: TextAlign.center,
         inputType: TextInputType.number,
         hintText: '',
         controller: controller,//verificationNumberOne,
         validateText: 'This Field Must Not Be Empty',
+        color: AppColor.lightGrey,
+      ) : MyFormField(
+        onTap: (){
+          setState(() {
+
+          });
+        },
+        textAlign: TextAlign.center,
+        inputType: TextInputType.number,
+        hintText: '',
+        controller: controller,//verificationNumberOne,
+        validateText: 'This Field Must Not Be Empty',
+        color: AppColor.pink,
       ),
     ),
   );
