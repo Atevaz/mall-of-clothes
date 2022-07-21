@@ -7,6 +7,7 @@ class HeadLineText extends StatelessWidget {
   final Color color;
   final double fontSize;
   final int maxLines;
+   bool? isUpper;
   final TextOverflow overflow;
 
 
@@ -16,13 +17,14 @@ class HeadLineText extends StatelessWidget {
     this.fontSize = 25,
     this.maxLines = 1,
     this.overflow = TextOverflow.ellipsis,
+    this.isUpper = true,
 
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
-        text,
+      isUpper! ?  text.toUpperCase():text,
       style: TextStyle(
         color: color,
         fontFamily: 'SemiBold',

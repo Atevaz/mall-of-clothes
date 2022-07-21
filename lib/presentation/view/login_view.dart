@@ -102,6 +102,7 @@ class LoginView extends StatelessWidget {
                   MyMaterialButton(
                     onPressed: () {
                       if(formKey.currentState!.validate()){
+                        Navigator.pushNamed(context, AppRouterNames.rHomeScreenRoute,);
                       }
                     },
                     text: 'LOGIN',
