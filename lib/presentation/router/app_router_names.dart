@@ -9,5 +9,7 @@ class AppRouterNames {
   static const rPasswordChangeRoute = '/password_change';
   static const rNewPasswordChangeRoute = '/new_password_change';
   static const rPasswordChangeSuccessfullyRoute = '/password_change_successfully';
+  static const rHomeScreenRoute = '/home_screen';
+
 
 }
