@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/headline_text.dart';
 
@@ -32,12 +33,12 @@ class MyMaterialButton extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: MaterialButton(
         color: color,
-        height: 52,
+        height: 52.h,
         onPressed: onPressed,
         child: HeadLineText(
           text: isUpper ? text.toUpperCase() : text,
           color: AppColor.white,
-          fontSize: 20,
+          fontSize: 20.sp,
         ),
       ),
     );

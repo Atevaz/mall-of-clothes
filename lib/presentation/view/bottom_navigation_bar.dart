@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../styles/colors.dart';
 import '../widget/medium_text.dart';
@@ -22,7 +23,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       padding: const EdgeInsets.all(10.0),
       child: Card(
         shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.r)),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: BottomNavyBar(
           selectedIndex: currentIndex,

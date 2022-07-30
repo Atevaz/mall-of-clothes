@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magdsoft_flutter_structure/presentation/router/app_router_names.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/material_button.dart';
@@ -97,9 +98,9 @@ class OnBoardingView extends StatelessWidget {
                 effect:  ExpandingDotsEffect(
                   dotColor: Colors.grey,
                   activeDotColor: AppColor.pink,
-                  dotHeight: 5,
-                  dotWidth: 10,
-                  spacing: 5.0,
+                  dotHeight: 5.h,
+                  dotWidth: 10.w,
+                  spacing: 5.0.w,
                   expansionFactor: 2,
                 ),
                 count: boarding.length,
