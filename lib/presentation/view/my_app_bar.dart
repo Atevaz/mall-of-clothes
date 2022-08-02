@@ -7,6 +7,8 @@ class MyAppBar extends StatelessWidget {
 
   final IconData leadingIcon;
 
+  final VoidCallback leadingIconPressed ;
+
   final IconData actionIcon;
 
   const MyAppBar({
@@ -14,13 +16,14 @@ class MyAppBar extends StatelessWidget {
     this.title = 'Kashkha',
     this.leadingIcon = Icons.add_shopping_cart_outlined,
     this.actionIcon= Icons.search,
+    required this.leadingIconPressed
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        onPressed: () {},
+        onPressed: leadingIconPressed,
         icon: Icon(
           leadingIcon,
           color: AppColor.pink,

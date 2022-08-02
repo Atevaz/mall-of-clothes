@@ -30,9 +30,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
           showElevation: true, // use this to remove appBar's elevation
           onItemSelected: (index) => setState(() {
             currentIndex = index;
-            pageController.animateToPage(currentIndex,
+            pageController.animateToPage(index,
                 duration: Duration(milliseconds: 300), curve: Curves.ease);
           }),
+          
           items: [
             BottomNavyBarItem(
               icon: Icon(

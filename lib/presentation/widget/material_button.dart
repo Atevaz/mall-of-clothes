@@ -11,6 +11,8 @@ class MyMaterialButton extends StatelessWidget {
   final String text;
 
   final double width;
+  final double height;
+  final double textSize;
   final bool isUpper ;
 
 
@@ -21,6 +23,8 @@ class MyMaterialButton extends StatelessWidget {
     required this.text,
      this.width = double.infinity,
     this.isUpper = true,
+    this.height = 52,
+    this.textSize = 20,
   }) : super(key: key);
 
   @override
@@ -33,12 +37,12 @@ class MyMaterialButton extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: MaterialButton(
         color: color,
-        height: 52.h,
+        height: height.h,
         onPressed: onPressed,
         child: HeadLineText(
           text: isUpper ? text.toUpperCase() : text,
           color: AppColor.white,
-          fontSize: 20.sp,
+          fontSize: textSize.sp,
         ),
       ),
     );

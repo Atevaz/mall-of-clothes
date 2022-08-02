@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft_flutter_structure/presentation/router/app_router_names.dart';
+import 'package:magdsoft_flutter_structure/presentation/screens/user/category_screen.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/forget_passorord_screen.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/home_screen.dart';
 import 'package:magdsoft_flutter_structure/presentation/screens/user/new_password_screen.dart';
@@ -14,7 +15,7 @@ class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRouterNames.rOnBoardingRoute:
-        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+        return MaterialPageRoute(builder: (_) => CategoryScreen());
       case AppRouterNames.rLoginRoute:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case AppRouterNames.rRegisterRoute:
@@ -28,7 +29,9 @@ class AppRouter {
       case AppRouterNames.rPasswordChangeSuccessfullyRoute:
         return MaterialPageRoute(builder: (_) => PasswordChangeSuccessfully());
       case AppRouterNames.rHomeScreenRoute:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case AppRouterNames.rCategoryScreenRoute:
+        return MaterialPageRoute(builder: (_) => CategoryScreen());
       default:
         return null;
     }

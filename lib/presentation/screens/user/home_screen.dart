@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:magdsoft_flutter_structure/presentation/styles/colors.dart';
 import 'package:magdsoft_flutter_structure/presentation/view/chosen_product_view.dart';
+import 'package:magdsoft_flutter_structure/presentation/view/my_app_bar.dart';
 import 'package:magdsoft_flutter_structure/presentation/view/new_arrival_item_view.dart';
 import 'package:magdsoft_flutter_structure/presentation/view/new_collection_card_view.dart';
 import 'package:magdsoft_flutter_structure/presentation/widget/medium_text.dart';
+
+import '../../view/bottom_navigation_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +14,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity,50),
+        child: MyAppBar(leadingIconPressed: (){},),
+      ),
       backgroundColor: Colors.grey[200],
       body: SafeArea(
         child: Padding(
@@ -56,7 +63,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
